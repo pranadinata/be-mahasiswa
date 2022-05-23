@@ -1,23 +1,24 @@
 require('dotenv').config();
 const express = require('express');
+var cors = require('cors')
 const bodyParser = require('body-parser');
 const sequelize = require('./config/sequelize');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
 
+//Models
+require('./routes/modelsRoute');
+
+//Controllers
 // const homeRouter = require('./routes/home');
 // const bukuRouter = require('./routes/buku');
 // const userRouter = require('./routes/user');
 // const cartRouter = require('./routes/cart');
 
-// const User = require('./models/user');
-// const Buku = require('./models/buku');
-// const Cart = require('./models/cart');
-
+//Route
 // app.use(homeRouter);
 // app.use('/buku', bukuRouter);
 // app.use('/user', userRouter);
